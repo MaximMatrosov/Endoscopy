@@ -25,7 +25,6 @@
         var animationVideo = document.querySelector('.animation__video');
         var eye = document.querySelectorAll('.animation__eye');
         var button = document.querySelector('.form__button');
-        var about = document.querySelector('.about');
 
         for (var i = 0; i < eye.length; i++) {
             eye[i].style.display = 'block';
@@ -35,7 +34,7 @@
         animation.style.maxHeight = '374px';
         animationVideo.style.display = 'block';
         fadeIn(animationVideo, 2000);
-        fadeIn(about, 2000);
+
         animationVideo.play();
 
         inputLogin.removeEventListener('focus', firstFocusHandler);
@@ -153,7 +152,6 @@
 
     function clickHandler() {
         var wrapper = document.querySelector('.wrapper');
-        inputPassword.type = 'text';
         fadeOut(wrapper, 1000);
     }
 

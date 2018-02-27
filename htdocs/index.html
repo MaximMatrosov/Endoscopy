@@ -4,30 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Вход</title>
-    <link href="css/login.css" rel="stylesheet">
     <link rel="icon" href="favicon.png"/>
-    <style type="text/css">
-        :root .banner_box,
-        :root .adv {
-            display: none !important;
-        }
-
-    </style>
+    <link href="css/login.css" rel="stylesheet">
 </head>
 <body>
 <script src="js/jquery-3.2.1.js"></script>
-
 <div class="wrapper">
-    <div class="animation" style="max-height: 374px;">
-        <div class="animation__eye animation__eye--one-one"
-             style="display: block; opacity: 1; left: 58px; top: 107px;"></div>
-        <div class="animation__eye animation__eye--one-two"
-             style="display: block; opacity: 1; left: 104px; top: 108px;"></div>
-        <div class="animation__eye animation__eye--two-one"
-             style="display: block; opacity: 1; left: 250px; top: 164px;"></div>
-        <div class="animation__eye animation__eye--two-two"
-             style="display: block; opacity: 1; left: 296px; top: 164px;"></div>
-        <video class="animation__video" width="384" height="374" loop="" muted="" autoplay="">
+    <div class="animation">
+        <div class="animation__eye animation__eye--one-one"></div>
+        <div class="animation__eye animation__eye--one-two"></div>
+        <div class="animation__eye animation__eye--two-one"></div>
+        <div class="animation__eye animation__eye--two-two"></div>
+        <video class="animation__video" width="384" height="374" loop muted autoplay>
             <source src="video/watchers.mp4" type="video/mp4">
         </video>
     </div>
@@ -35,17 +23,16 @@
         <fieldset class="form__fieldset">
             <label class="form__field form__field--login">
                 <span class="form__label">Логин</span>
-                <input id="login" class="form__input form__input--login" type="text">
+                <input class="form__input form__input--login" type="text">
             </label>
             <label class="form__field form__field--password">
                 <span class="form__label">Пароль</span>
-                <input id="password" class="form__input form__input--password" type="password">
+                <input class="form__input form__input--password" type="password">
             </label>
         </fieldset>
-        <a id="submit" class="form__button">Войти</a>
+        <a class="form__button">Войти</a>
     </form>
 </div>
 <script src="js/eyes.js"></script>
 </body>
 </html>
-
