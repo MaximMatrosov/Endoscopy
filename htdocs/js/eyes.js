@@ -151,8 +151,25 @@
     }
 
     function clickHandler() {
-        var wrapper = document.querySelector('.wrapper');
-        fadeOut(wrapper, 1000);
+
+        var login = $("#login").val();
+        var pass = $("#password").val();
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            data: {login: login, pass: pass},
+            success: function (result) {
+                $("#alert").css("display", "none");
+                var wrapper = document.querySelector('.wrapper');
+                fadeOut(wrapper, 1000);
+                setTimeout(function () {
+                    window.location.replace("/main.html");
+                }, 1000);
+            },
+            error: function () {
+                $("#alert").css("display", "inline");
+            }
+        });
     }
 
     function setPosition(person, xLeft, yLeft, xRight, yRight) {

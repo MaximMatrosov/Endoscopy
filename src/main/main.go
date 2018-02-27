@@ -32,7 +32,9 @@ func Login(w http.ResponseWriter, r *http.Request){
 	pass := r.FormValue("pass")
 
 	if (login == "" && pass == "333"){
-		w.Write([]byte("/main.html"))
+		http.Redirect(w,r,"/main.html", http.StatusOK)
+	} else {
+		http.Redirect(w,r,"", http.StatusUnauthorized)
 	}
 }
 

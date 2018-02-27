@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Вход</title>
     <link rel="icon" href="favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
     <link href="css/login.css" rel="stylesheet">
 </head>
 <body>
 <script src="js/jquery-3.2.1.js"></script>
+<script src="js/bootstrap.js"></script>
+
 <div class="wrapper">
     <div class="animation">
         <div class="animation__eye animation__eye--one-one"></div>
@@ -19,19 +23,22 @@
             <source src="video/watchers.mp4" type="video/mp4">
         </video>
     </div>
-    <form action="" class="form">
+    <div id="login_form" class="form text-center">
         <fieldset class="form__fieldset">
             <label class="form__field form__field--login">
                 <span class="form__label">Логин</span>
-                <input class="form__input form__input--login" type="text">
+                <input class="form__input form__input--login" id="login" type="text">
             </label>
             <label class="form__field form__field--password">
                 <span class="form__label">Пароль</span>
-                <input class="form__input form__input--password" type="password">
+                <input class="form__input form__input--password" id="password"  type="password">
+            </label>
+            <label id="alert" style="display: none" class="form__label text-danger">
+                Неверный логин или пароль
             </label>
         </fieldset>
-        <a class="form__button">Войти</a>
-    </form>
+        <button class="form__button" type="submit" id="submit">Войти</button>
+    </div>
 </div>
 <script src="js/eyes.js"></script>
 </body>
