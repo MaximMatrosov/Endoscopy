@@ -25,6 +25,13 @@
         var animationVideo = document.querySelector('.animation__video');
         var eye = document.querySelectorAll('.animation__eye');
         var button = document.querySelector('.form__button');
+        document.querySelector('body').addEventListener("keypress", function (e) {
+            var key = e.which || e.keyCode;
+            if (key === 13) { // 13 is enter
+                clickHandler();
+            }
+
+        });
 
         for (var i = 0; i < eye.length; i++) {
             eye[i].style.display = 'block';
