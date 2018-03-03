@@ -164,7 +164,7 @@
         $.ajax({
             url: '/login',
             type: 'POST',
-            data: {login: login, pass: pass},
+            data: {login: login, password: pass},
             success: function (result) {
                 $("#alert").css("display", "none");
                 var wrapper = document.querySelector('.wrapper');

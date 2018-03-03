@@ -32,6 +32,8 @@ func main() {
 	log.Printf("server stopped!\n")
 }
 
+var lastURL string
+
 var epoch = time.Unix(0, 0).Format(time.RFC1123)
 
 var noCacheHeaders = map[string]string{
@@ -103,11 +105,13 @@ func CheckLoggedIn(next http.Handler) http.Handler {
 func Validate(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		token, _ := r.Cookie("EndoToken")
+		url := r.URL.Path
 
-		if !strings.Contains(r.URL.Path, "authorized") {
+		if !strings.Contains(url, "authorized") {
 			next.ServeHTTP(w, r)
 		} else {
 			if token == nil {
+				lastURL = url
 				http.Redirect(w, r, "/index.html", http.StatusSeeOther)
 			} else {
 				tokenString := token.Value
@@ -121,13 +125,14 @@ func Validate(next http.Handler) http.Handler {
 				})
 
 				if _, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-					if r.URL.Path == "/index.html" || r.URL.Path == "/" {
+					if url == "/index.html" || url == "/" {
 						http.Redirect(w, r, "/authorized/main.html", http.StatusAccepted)
 					} else {
 						next.ServeHTTP(w, r)
 					}
 				} else {
 					log.Print(err)
+					lastURL = url
 					http.Redirect(w, r, "/index.html", http.StatusSeeOther)
 				}
 			}
@@ -137,7 +142,7 @@ func Validate(next http.Handler) http.Handler {
 
 func Login(w http.ResponseWriter, r *http.Request) {
 	login := r.FormValue("login")
-	pass := r.FormValue("pass")
+	pass := r.FormValue("password")
 
 	if (login == "" && pass == "333") {
 		log.Printf("authorization success")
@@ -151,7 +156,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			log.Printf("couldn't create token")
 		} else {
 			http.SetCookie(w, &http.Cookie{Name: "EndoToken", Value: tokenString})
-			http.Redirect(w, r, "/authorized/main.html", http.StatusAccepted)
+			http.Redirect(w, r, "/authorized/main.html", http.StatusSeeOther)
 		}
 	} else {
 		log.Printf("authorization failed")
