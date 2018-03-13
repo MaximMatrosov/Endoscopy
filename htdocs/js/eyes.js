@@ -170,7 +170,7 @@
                 var wrapper = document.querySelector('.wrapper');
                 fadeOut(wrapper, 1000);
                 setTimeout(function () {
-                    window.location.replace("/main.html");
+                    window.location.replace("authorized/main.html");
                 }, 1000);
             },
             error: function () {

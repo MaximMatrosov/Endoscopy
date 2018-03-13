@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.css"/>
-    <link rel="icon" href="favicon.png"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+    <link rel="icon" href="../favicon.png"/>
 
     <title>Эндоскопия</title>
     <style type="text/css">
@@ -17,7 +17,7 @@
         }
 
         body {
-            background: #ffffff url("background.png") no-repeat scroll 40% 30%;
+            background: #ffffff url("../background.png") no-repeat scroll 40% 30%;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -37,30 +37,15 @@
     </style>
 </head>
 <body>
-<script src="js/jquery-3.2.1.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
 <div class="text-center main-header">
     <div class="alert alert-success">
         <h1><b>Основное меню</b></h1>
     </div>
 </div>
 <div class="main-body">
-    <div class="col-sm-4">
-        <div class="panel panel-danger">
-            <div class="panel-heading">
-                <div class="panel-title text-center">
-                    <span class="glyphicon glyphicon-exclamation-sign"></span>
-                    <b>Не ответа по гистологии более 2-х недель</b>
-                </div>
-            </div>
-            <div class="panel-body">
-                <button class="btn btn-lg btn-default btn-block">
-                    <span class="glyphicon glyphicon-edit text-danger"></span>
-                    <b class="text-danger">Ввод гистологии</b>
-                </button>
-            </div>
-        </div>
-    </div>
+
     <div class="col-sm-3">
         <div class="btn-group-vertical btn-block">
             <button class="btn btn-lg btn-default">
@@ -143,6 +128,22 @@
                         Ректороманоскопия
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <span class="glyphicon glyphicon-exclamation-sign"></span>
+                    <b>Не ответа по гистологии более 2-х недель</b>
+                </div>
+            </div>
+            <div class="panel-body">
+                <button class="btn btn-lg btn-default btn-block">
+                    <span class="glyphicon glyphicon-edit text-danger"></span>
+                    <b class="text-danger">Ввод гистологии</b>
+                </button>
             </div>
         </div>
     </div>
