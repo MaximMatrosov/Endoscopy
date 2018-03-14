@@ -8,14 +8,15 @@ import (
 	"github.com/dgrijalva/jwt-go"
 	"time"
 	"fmt"
+	"strings"
 )
 
 func main() {
 	config.GetConfig()
 
-	http.Handle("/", Validate(http.FileServer(http.Dir("htdocs"))))
+	http.Handle("/", CheckLoggedIn(http.FileServer(http.Dir("htdocs"))))
+	http.Handle("/authorized/", Validate(http.FileServer(http.Dir("htdocs"))))
 	http.HandleFunc("/login", Login)
-	//http.Handle("/authorized/", Validate(http.FileServer(http.Dir("htdocs"))))
 
 	address := config.Config["WEBSERVER_START_ON_ADDRESS"]
 	log.Printf("server starting on address " + address + "...")
@@ -31,28 +32,68 @@ func main() {
 	log.Printf("server stopped!\n")
 }
 
+func CheckLoggedIn(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path == "/" {
+			token, _ := r.Cookie("EndoToken")
+			if token != nil {
+				tokenString := token.Value
+				token, _ := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+					// Don't forget to validate the alg is what you expect:
+					if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+						return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+					}
+
+					return []byte("endoscopy"), nil
+				})
+
+				if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+					log.Printf("user authorized", claims["name"])
+					http.Redirect(w, r, "/authorized/main.html", http.StatusSeeOther)
+				} else {
+					next.ServeHTTP(w,r)
+				}
+			} else {
+				next.ServeHTTP(w,r)
+			}
+		} else {
+			next.ServeHTTP(w,r)
+		}
+
+	})
+}
+
 func Validate(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		token, _ := r.Cookie("EndoToken")
-		if token == nil {
-			http.Redirect(w, r, "index.html", http.StatusMovedPermanently)
+
+		if !strings.Contains(r.URL.Path, "authorized") {
+			next.ServeHTTP(w, r)
 		} else {
-			tokenString := token.Value
-			token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-				// Don't forget to validate the alg is what you expect:
-				if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
-					return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
-				}
-
-				return []byte("endoscopy"), nil
-			})
-
-			if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-				log.Printf("user authorized", claims["name"])
-				next.ServeHTTP(w, r)
+			if token == nil {
+				http.Redirect(w, r, "/index.html", http.StatusSeeOther)
 			} else {
-				log.Print(err)
-				http.Redirect(w, r, "index.html", http.StatusMovedPermanently)
+				tokenString := token.Value
+				token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+					// Don't forget to validate the alg is what you expect:
+					if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+						return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+					}
+
+					return []byte("endoscopy"), nil
+				})
+
+				if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+					log.Printf("user authorized", claims["name"])
+					if r.URL.Path == "/index.html" || r.URL.Path == "/" {
+						http.Redirect(w, r, "/authorized/main.html", http.StatusAccepted)
+					} else {
+						next.ServeHTTP(w, r)
+					}
+				} else {
+					log.Print(err)
+					http.Redirect(w, r, "/index.html", http.StatusSeeOther)
+				}
 			}
 		}
 	})
@@ -73,7 +114,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			log.Printf("couldn't create token")
 		} else {
 			http.SetCookie(w, &http.Cookie{Name: "EndoToken", Value: tokenString})
-			http.Redirect(w, r, "authorized/main.html", http.StatusAccepted)
+			http.Redirect(w, r, "/authorized/main.html", http.StatusAccepted)
 		}
 
 	} else {
