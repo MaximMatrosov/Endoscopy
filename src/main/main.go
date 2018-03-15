@@ -86,18 +86,17 @@ func CheckLoggedIn(next http.Handler) http.Handler {
 				})
 
 				if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-					log.Printf("user authorized", claims["name"])
+					log.Printf("user '%v' is already authorized! Redirecting to main page...", claims["name"])
 					http.Redirect(w, r, "/authorized/main.html", http.StatusSeeOther)
 				} else {
-					next.ServeHTTP(w,r)
+					next.ServeHTTP(w, r)
 				}
 			} else {
-				next.ServeHTTP(w,r)
+				next.ServeHTTP(w, r)
 			}
 		} else {
-			next.ServeHTTP(w,r)
+			next.ServeHTTP(w, r)
 		}
-
 	})
 }
 
@@ -121,8 +120,7 @@ func Validate(next http.Handler) http.Handler {
 					return []byte("endoscopy"), nil
 				})
 
-				if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-					log.Printf("user authorized", claims["name"])
+				if _, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
 					if r.URL.Path == "/index.html" || r.URL.Path == "/" {
 						http.Redirect(w, r, "/authorized/main.html", http.StatusAccepted)
 					} else {
@@ -142,6 +140,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 	pass := r.FormValue("pass")
 
 	if (login == "" && pass == "333") {
+		log.Printf("authorization success")
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 			"admin": true,
 			"name":  "doctor",
@@ -154,8 +153,8 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			http.SetCookie(w, &http.Cookie{Name: "EndoToken", Value: tokenString})
 			http.Redirect(w, r, "/authorized/main.html", http.StatusAccepted)
 		}
-
 	} else {
+		log.Printf("authorization failed")
 		http.Redirect(w, r, "", http.StatusUnauthorized)
 	}
 }
