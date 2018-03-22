@@ -1,11 +1,6 @@
 {
   "WEBSERVER_START_ON_ADDRESS": "0.0.0.0:86",
-  "DB_CONNECT_STRING_PU": "host=192.168.2.200 port=5432 user=postgres password=12345678 dbname=BD_PU_44 sslmode=disable",
-  "DB_CONNECT_STRING_GON": "host=192.168.2.200 port=5432 user=postgres password=12345678 dbname=lbd_obmena sslmode=disable",
-  "DB_CONNECT_STRING_GGFI": "host=192.168.2.200 port=5432 user=postgres password=12345678 dbname=BD_GGFI sslmode=disable",
-  "DIR_FILES_FOR_BAU": "//192.168.2.10/public/BAU/",
-  "Task_PU_MDS": "8",
-  "DIR_ANPA_PLAN_INPUT": "//192.168.2.10/public/Released/aplan/input/",
-  "DIR_ANPA_PLAN_OUTPUT": "//192.168.2.10/public/Released/aplan/output/",
+  "DB_CONNECT_STRING": "host=localhost port=5432 user=postgres password=postgres dbname=endoscopy sslmode=disable",
+
   "DIR_QUERIES": "htdocs/queries/"
 }

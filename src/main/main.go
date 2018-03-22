@@ -32,7 +32,7 @@ func main() {
 	log.Printf("server stopped!\n")
 }
 
-var lastURL string
+var lastURL = ""
 
 var epoch = time.Unix(0, 0).Format(time.RFC1123)
 
@@ -156,7 +156,12 @@ func Login(w http.ResponseWriter, r *http.Request) {
 			log.Printf("couldn't create token")
 		} else {
 			http.SetCookie(w, &http.Cookie{Name: "EndoToken", Value: tokenString})
-			http.Redirect(w, r, "/authorized/main.html", http.StatusSeeOther)
+			if lastURL == "" {
+				w.Write([]byte("authorized/main.html"))
+			} else {
+				w.Write([]byte(lastURL))
+				lastURL = ""
+			}
 		}
 	} else {
 		log.Printf("authorization failed")

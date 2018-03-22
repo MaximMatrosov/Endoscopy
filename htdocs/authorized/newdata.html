@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-select.min.css"/>
+    <link rel="icon" href="../favicon.png"/>
+
+    <title>Эндоскопия</title>
+    <style type="text/css">
+
+        .main-header {
+            padding-bottom: 2px;
+        }
+
+        body {
+            background: #ffffff url("../background.png") no-repeat scroll 40% 30%;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .main-footer {
+            position: relative;
+            bottom: 0;
+        }
+
+        .form-horizontal .form-group {
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+        }
+
+        button, .btn {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/bootstrap.js"></script>
+<script src="../js/bootstrap-select.min.js"></script>
+<script src="../js/i18n/defaults-ru_RU.min.js"></script>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <div class="panel-title text-center">Ввод данных</div>
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal">
+            <div class="col-sm-12" style="padding: 0">
+                <div class="form-group col-lg-3 col-md-3">
+                    <label class="control-label col-md-4" for="date">Дата</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="date" id="date">
+                    </div>
+                </div>
+                <div class="form-group col-lg-2 col-md-2">
+                    <label class="control-label col-md-4" for="time">Время</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="time" id="time">
+                    </div>
+                </div>
+                <div class="form-group col-lg-3 col-md-3">
+                    <label class="control-label col-lg-5 col-md-6" for="research">Исследование</label>
+                    <select class="selectpicker col-lg-7 col-md-6" data-live-search="true" id="research">
+                    </select>
+                </div>
+                <div class="form-group col-lg-4 col-md-4">
+                    <label class="control-label col-lg-8 col-md-9" for="research_num">№ по журналу исследований</label>
+                    <div class="col-lg-4 col-md-3">
+                        <input class="form-control" type="number" id="research_num">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12" style="padding: 0">
+                <div class="form-group col-lg-3 col-md-3">
+                    <label class="control-label col-md-4" for="family">Фамилия</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" placeholder="Фамилия" id="family">
+                    </div>
+                </div>
+                <div class="form-group col-lg-3 col-md-3">
+                    <label class="control-label col-md-4" for="first_name">Имя</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" placeholder="Имя" id="first_name">
+                    </div>
+                </div>
+                <div class="form-group col-lg-3 col-md-3">
+                    <label class="control-label col-md-4" for="second_name">Отчество</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" placeholder="Отчество" id="second_name">
+                    </div>
+                </div>
+                <div class="form-group col-lg-3 col-md-3">
+                    <label class="control-label col-lg-4 col-md-5" for="gender">Пол</label>
+                    <select class="selectpicker col-lg-8 col-md-7" data-live-search="true" id="gender">
+                    </select>
+                </div>
+            </div>
+            <div class="col-sm-6" style="padding: 0">
+                <div class="form-group col-lg-12">
+                    <label class="control-label col-lg-4 col-md-6" for="anestisia_type">Тип анестезии</label>
+                    <select class="selectpicker col-lg-8 col-md-6" data-live-search="true" id="anestisia_type">
+                    </select>
+                </div>
+                <div class="form-group col-lg-7 col-md-7">
+                    <label class="control-label col-lg-5 col-md-6" for="card_num">№ карты/и.б.</label>
+                    <div class="col-lg-7 col-md-6">
+                        <input class="form-control" type="text" placeholder="Номер карты" id="card_num">
+                    </div>
+                </div>
+                <div class="form-group col-lg-7 col-md-7">
+                    <label class="control-label col-lg-6 col-md-7" for="birth_year">Год рождения</label>
+                    <div class="col-lg-6 col-md-5">
+                        <input class="form-control" type="number" placeholder="Год" id="birth_year">
+                    </div>
+                </div>
+                <div class="form-group col-lg-5 col-md-5">
+                    <label class="control-label col-lg-8 col-md-7" for="is_urgent">Экстренный</label>
+                    <div class="checkbox-inline col-lg-4 col-md-5">
+                        <input type="checkbox" id="is_urgent" value="">
+                    </div>
+                </div>
+                <div class="form-group col-lg-7 col-md-7">
+                    <label class="control-label col-lg-4 col-md-5" for="place">Место</label>
+                    <select class="selectpicker col-lg-8 col-md-7" data-live-search="true" id="place">
+                    </select>
+                </div>
+                <div class="form-group col-lg-5 col-md-5">
+                    <label class="control-label col-lg-8 col-md-7" for="is_vich">ВИЧ</label>
+                    <div class="checkbox-inline col-lg-4 col-md-5">
+                        <input type="checkbox" id="is_vich" value="">
+                    </div>
+                </div>
+                <div class="form-group col-lg-7 col-md-6">
+                    <label class="control-label col-lg-4 col-md-6" for="department">Отделение</label>
+                    <select class="selectpicker col-lg-8 col-md-6" data-live-search="true" id="department">
+                    </select>
+                </div>
+                <div class="form-group col-lg-5 col-md-6">
+                    <label class="control-label col-lg-4 col-md-6" for="equipment">Аппарат</label>
+                    <select class="selectpicker col-lg-8 col-md-6" data-live-search="true" id="equipment">
+                    </select>
+                </div>
+                <div class="form-group col-lg-12">
+                    <label class="control-label col-lg-4 col-md-6" for="entry_diagnose">Входной диагноз</label>
+                    <div class="col-lg-8 col-md-6">
+                        <textarea class="form-control" data-live-search="true" id="entry_diagnose"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Принадлежность
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            Лечебная
+                        </div>
+                    </div>
+                    <div class="panel-body">
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
