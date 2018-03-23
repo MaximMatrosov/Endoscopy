@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-select.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css"/>
     <link rel="icon" href="../favicon.png"/>
 
     <title>Эндоскопия</title>
@@ -23,6 +24,7 @@
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
+            font-size: medium;
         }
 
         .main-footer {
@@ -40,16 +42,67 @@
             text-overflow: ellipsis;
             white-space: nowrap;
         }
+
+        .ui-autocomplete {
+            max-height: 150px;
+            overflow-y: auto; /* prevent horizontal scrollbar */
+            overflow-x: hidden; /* add padding to account for vertical scrollbar */
+            z-index: 1000 !important;
+        }
+
     </style>
 </head>
 <body>
 <script src="../js/jquery-3.2.1.js"></script>
+<script src="../js/jquery-ui.min.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/bootstrap-select.min.js"></script>
 <script src="../js/i18n/defaults-ru_RU.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var availableTags = [
+            "ActionScript",
+            "AppleScript",
+            "Asp",
+            "BASIC",
+            "C",
+            "C++",
+            "Clojure",
+            "COBOL",
+            "ColdFusion",
+            "Erlang",
+            "Fortran",
+            "Groovy",
+            "Haskell",
+            "Java",
+            "JavaScript",
+            "Lisp",
+            "Perl",
+            "PHP",
+            "Python",
+            "Ruby",
+            "Scala",
+            "Scheme"
+        ];
+        $("#entry_diagnose").autocomplete({
+            source: availableTags,
+            minLength: 0
+        });
+
+        $("#select_diagnose").on('click', function () {
+
+            $("#entry_diagnose").autocomplete("search", "");
+        });
+
+        var height = $("#patient_data").height();
+        $("#status_affiliation").height(height - 80);
+        $("#manipulation").height(height - 80);
+    });
+</script>
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <div class="panel-title text-center">Ввод данных</div>
+        <div class="panel-title text-center"><b>Ввод данных</b></div>
     </div>
     <div class="panel-body">
         <form class="form-horizontal">
@@ -103,7 +156,7 @@
                     </select>
                 </div>
             </div>
-            <div class="col-sm-6" style="padding: 0">
+            <div id="patient_data" class="col-sm-6" style="padding: 0">
                 <div class="form-group col-lg-12">
                     <label class="control-label col-lg-4 col-md-6" for="anestisia_type">Тип анестезии</label>
                     <select class="selectpicker col-lg-8 col-md-6" data-live-search="true" id="anestisia_type">
@@ -122,9 +175,13 @@
                     </div>
                 </div>
                 <div class="form-group col-lg-5 col-md-5">
-                    <label class="control-label col-lg-8 col-md-7" for="is_urgent">Экстренный</label>
-                    <div class="checkbox-inline col-lg-4 col-md-5">
-                        <input type="checkbox" id="is_urgent" value="">
+                    <div class="checkbox-inline col-lg-5 col-md-5">
+                        <label class="" for="is_urgent">
+                            <input type="checkbox" id="is_urgent" value="">Экстренный</label>
+                    </div>
+                    <div class="checkbox-inline col-lg-5 col-md-5">
+                        <label class="col-lg-8 col-md-7" for="is_vich">
+                            <input type="checkbox" id="is_vich" value="">ВИЧ</label>
                     </div>
                 </div>
                 <div class="form-group col-lg-7 col-md-7">
@@ -133,14 +190,15 @@
                     </select>
                 </div>
                 <div class="form-group col-lg-5 col-md-5">
-                    <label class="control-label col-lg-8 col-md-7" for="is_vich">ВИЧ</label>
-                    <div class="checkbox-inline col-lg-4 col-md-5">
-                        <input type="checkbox" id="is_vich" value="">
+                    <div class="checkbox-inline col-lg-5 col-md-5">
+                        <label class="" for="is_repeat">
+                            <input type="checkbox" id="is_repeat" value="">Повторно</label>
                     </div>
                 </div>
                 <div class="form-group col-lg-7 col-md-6">
                     <label class="control-label col-lg-4 col-md-6" for="department">Отделение</label>
-                    <select class="selectpicker col-lg-8 col-md-6" data-live-search="true" id="department">
+                    <select class="selectpicker col-lg-8 col-md-6" data-live-search="true"
+                            id="department">
                     </select>
                 </div>
                 <div class="form-group col-lg-5 col-md-6">
@@ -148,34 +206,59 @@
                     <select class="selectpicker col-lg-8 col-md-6" data-live-search="true" id="equipment">
                     </select>
                 </div>
+                <div class="form-group col-sm-12">
+                    <label class="control-label col-lg-3 col-md-6" for="entry_diagnose">Входной диагноз</label>
+                    <div class="input-group col-lg-9 col-md-6">
+                        <div class="input-group-addon">
+                            <button id="select_diagnose" type="button" class="btn btn-default dropdown-toggle"
+                                    data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"><span class="caret"></span>
+                            </button>
+                        </div>
+                        <div>
+                            <textarea class="form-control" id="entry_diagnose"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6" style="padding: 0">
+                <div class="col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Принадлежность
+                            </h3>
+                        </div>
+                        <div id="status_affiliation" class="panel-body">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Лечебная
+                            </h3>
+                        </div>
+                        <div id="manipulation" class="panel-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8">
                 <div class="form-group col-lg-12">
-                    <label class="control-label col-lg-4 col-md-6" for="entry_diagnose">Входной диагноз</label>
-                    <div class="col-lg-8 col-md-6">
-                        <textarea class="form-control" data-live-search="true" id="entry_diagnose"></textarea>
-                    </div>
+                    <label class="control-label col-lg-3 col-md-4" for="protocol_name">Название протокола</label>
+                    <select class="selectpicker col-lg-9 col-md-8" data-live-search="true" id="protocol_name">
+                    </select>
                 </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            Принадлежность
+                <div class="form-group col-sm-12">
+                    <label class="control-label col-lg-3 col-md-4" for="entry_diagnose">Протокол</label>
+                    <div class="col-lg-9 col-md-8">
+                        <div>
+                            <textarea rows="5" class="form-control" id="entry_diagnose"></textarea>
                         </div>
-                    </div>
-                    <div class="panel-body">
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-3">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <div class="panel-title">
-                            Лечебная
-                        </div>
-                    </div>
-                    <div class="panel-body">
-
                     </div>
                 </div>
             </div>
