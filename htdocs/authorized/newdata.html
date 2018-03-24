@@ -32,10 +32,14 @@
             bottom: 0;
         }
 
-        .form-horizontal .form-group {
+        .form-horizontal, .form-group, .panel {
             margin-right: 0 !important;
             margin-left: 0 !important;
+            margin-top: 2px !important;
+            margin-bottom: 2px !important;
+
         }
+
 
         button, .btn {
             overflow: hidden;
@@ -50,11 +54,30 @@
             z-index: 1000 !important;
         }
 
+        label {
+            -webkit-user-select: none;
+            /* user-select -- это нестандартное свойство */
+
+            -moz-user-select: none;
+            /* поэтому нужны префиксы */
+
+            -ms-user-select: none;
+            text-align: left !important;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            /* display: none; <- Crashes Chrome on hover */
+            -webkit-appearance: none;
+            margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+        }
+
     </style>
 </head>
 <body>
 <script src="../js/jquery-3.2.1.js"></script>
 <script src="../js/jquery-ui.min.js"></script>
+<script src="../js/date.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/bootstrap-select.min.js"></script>
 <script src="../js/i18n/defaults-ru_RU.min.js"></script>
@@ -96,8 +119,12 @@
         });
 
         var height = $("#patient_data").height();
-        $("#status_affiliation").height(height - 80);
-        $("#manipulation").height(height - 80);
+        $("#status_affiliation").height(height - 70);
+        $("#manipulation").height(height - 70);
+
+        var DateTime = new Date(Date.now());
+        $("#date").val(DateTime.toString('yyyy-MM-dd'));
+        $("#time").val(DateTime.toString('HH:ss'));
     });
 </script>
 <div class="panel panel-primary">
@@ -121,12 +148,25 @@
                 </div>
                 <div class="form-group col-lg-3 col-md-3">
                     <label class="control-label col-lg-5 col-md-6" for="research">Исследование</label>
-                    <select class="selectpicker col-lg-7 col-md-6" data-live-search="true" id="research">
+                    <select class="selectpicker col-lg-7 col-md-6" data-live-search="true" data-size="10" id="research">
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
                     </select>
                 </div>
                 <div class="form-group col-lg-4 col-md-4">
-                    <label class="control-label col-lg-8 col-md-9" for="research_num">№ по журналу исследований</label>
-                    <div class="col-lg-4 col-md-3">
+                    <label class="control-label col-lg-9 col-md-9" for="research_num">№ по журналу исследований</label>
+                    <div class="col-lg-3 col-md-3">
                         <input class="form-control" type="number" id="research_num">
                     </div>
                 </div>
@@ -254,10 +294,18 @@
                     </select>
                 </div>
                 <div class="form-group col-sm-12">
-                    <label class="control-label col-lg-3 col-md-4" for="entry_diagnose">Протокол</label>
+                    <label class="control-label col-lg-3 col-md-4" for="protocol">Протокол</label>
                     <div class="col-lg-9 col-md-8">
                         <div>
-                            <textarea rows="5" class="form-control" id="entry_diagnose"></textarea>
+                            <textarea rows="5" class="form-control" id="protocol"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-12">
+                    <label class="control-label col-lg-3 col-md-4" for="conclusion">Заключение</label>
+                    <div class="col-lg-9 col-md-8">
+                        <div>
+                            <textarea rows="2" class="form-control" id="conclusion"></textarea>
                         </div>
                     </div>
                 </div>
