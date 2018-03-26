@@ -40,7 +40,6 @@
 
         }
 
-
         button, .btn {
             overflow: hidden;
             text-overflow: ellipsis;
@@ -90,10 +89,10 @@
             "Asp",
             "BASIC",
             "C",
-            "C++",
+            "C+ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc+",
             "Clojure",
             "COBOL",
-            "ColdFusion",
+            "ColdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddFusion",
             "Erlang",
             "Fortran",
             "Groovy",
@@ -124,7 +123,7 @@
 
         var DateTime = new Date(Date.now());
         $("#date").val(DateTime.toString('yyyy-MM-dd'));
-        $("#time").val(DateTime.toString('HH:ss'));
+        $("#time").val(DateTime.toString('HH:mm'));
     });
 </script>
 <div class="panel panel-primary">
@@ -146,9 +145,10 @@
                         <input class="form-control" type="time" id="time">
                     </div>
                 </div>
-                <div class="form-group col-lg-3 col-md-3">
+                <div class="form-group col-lg-4 col-md-4">
                     <label class="control-label col-lg-5 col-md-6" for="research">Исследование</label>
-                    <select class="selectpicker col-lg-7 col-md-6" data-live-search="true" data-size="10" id="research">
+                    <select class="selectpicker col-lg-7 col-md-6" title="Выберите исследование" data-live-search="true"
+                            data-size="10" id="research">
                         <option>Жопа</option>
                         <option>Жопа</option>
                         <option>Жопа</option>
@@ -164,9 +164,9 @@
                         <option>Жопа</option>
                     </select>
                 </div>
-                <div class="form-group col-lg-4 col-md-4">
-                    <label class="control-label col-lg-9 col-md-9" for="research_num">№ по журналу исследований</label>
-                    <div class="col-lg-3 col-md-3">
+                <div class="form-group col-lg-3 col-md-3">
+                    <label class="control-label col-lg-7 col-md-7" for="research_num">№ по журналу</label>
+                    <div class="col-lg-5 col-md-5">
                         <input class="form-control" type="number" id="research_num">
                     </div>
                 </div>
@@ -262,7 +262,7 @@
                 </div>
             </div>
             <div class="col-sm-6" style="padding: 0">
-                <div class="col-sm-5">
+                <div class="col-sm-5" style="padding: 0">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">
@@ -274,7 +274,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-7">
+                <div class="col-sm-7" style="padding: 0">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h3 class="panel-title">
@@ -287,7 +287,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-8" style="padding: 0">
                 <div class="form-group col-lg-12">
                     <label class="control-label col-lg-3 col-md-4" for="protocol_name">Название протокола</label>
                     <select class="selectpicker col-lg-9 col-md-8" data-live-search="true" id="protocol_name">
@@ -306,6 +306,254 @@
                     <div class="col-lg-9 col-md-8">
                         <div>
                             <textarea rows="2" class="form-control" id="conclusion"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-sm-7">
+                    <label class="control-label col-lg-3 col-md-4" for="conclusion_var">Заключение</label>
+                    <select multiple size="10" data-size="10" data-actions-box="true" data-live-search="true"
+                            data-multiple-separator=". " class="selectpicker col-lg-9 col-md-8" id="conclusion_var">
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-5">
+                    <label class="control-label col-lg-2 col-md-3" for="video">Видео</label>
+                    <select data-size="10" data-live-search="true" title="Тип носителя"
+                            class="selectpicker col-lg-10 col-md-9" id="video">
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                        <option>Видео</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label col-lg-2 col-md-3" for="doctor">Врач</label>
+                    <select multiple size="10" data-size="10" data-actions-box="true" data-live-search="true"
+                            data-multiple-separator=", " class="selectpicker col-lg-10 col-md-9" id="doctor">
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                        <option>Врач</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label class="control-label col-lg-2 col-md-3" for="sister">Сестра</label>
+                    <select data-size="10" data-live-search="true" title="ФИО медсестры"
+                            class="selectpicker col-lg-10 col-md-9" id="sister">
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                        <option>Сестра</option>
+                    </select>
+                </div>
+                <div>&nbsp;</div>
+                <div class="col-sm-12">
+                    <div class="form-group col-sm-6" >
+                        <a class="btn btn-lg btn-default" style="width: 100%"
+                           title="Поиск ранее осмотренного пациента для повторного ввода" role="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <b>Поиск ранее осмотренного пациента для повторного ввода</b>
+                        </a>
+                    </div>
+                    <div class="form-group col-sm-6" >
+                        <a class="btn btn-lg btn-primary" style="width: 100%"
+                           title="Запись в базу и вывод протоколов" role="button">
+                            <span class="glyphicon glyphicon-ok"></span>
+                            <b>Запись в базу и вывод протоколов</b>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4" style="padding: 0">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="biops">Биопсия Щипцевая</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="biops">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="4bl">ЧБЛ</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="4bl">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="tbl">ТБЛ</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="tbl">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="kbb">Установка КББ</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="kbb">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="pcr">ПЦР/смыв</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="pcr">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="mazok">Мазок отпечаток</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="mazok">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="brash">Браш биопсия</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="brash">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="bal">БАЛ</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="bal">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="ak">АК</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="ak">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="bk">БК/МБТ</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="bk">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="flora">Неспецифическая флора</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="flora">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="grib">Грибы</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="grib">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="gs">МБТ/Ж_С</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="gs">
+                            </div>
+                        </div>
+                        <div class="form-group-md">
+                            <label class="control-label col-lg-9 col-md-9" for="amilaza">Амилаза</label>
+                            <div class="col-lg-3 col-md-3">
+                                <input class="form-control input-sm" type="number" id="amilaza">
+                            </div>
                         </div>
                     </div>
                 </div>
