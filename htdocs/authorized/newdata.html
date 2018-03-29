@@ -136,19 +136,46 @@
                 <div class="form-group col-lg-3 col-md-3">
                     <label class="control-label col-md-4" for="date">Дата</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="date" id="date">
+                        <input class="form-control" name="date" type="date" id="date">
                     </div>
                 </div>
                 <div class="form-group col-lg-2 col-md-2">
                     <label class="control-label col-md-4" for="time">Время</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="time" id="time">
+                        <input class="form-control" name="date" type="time" id="time">
                     </div>
                 </div>
                 <div class="form-group col-lg-4 col-md-4">
                     <label class="control-label col-lg-5 col-md-6" for="research">Исследование</label>
-                    <select class="selectpicker col-lg-7 col-md-6" title="Выберите исследование" data-live-search="true"
+                    <select class="selectpicker col-lg-7 col-md-6" name="research" title="Выберите исследование"
+                            data-live-search="true"
                             data-size="10" id="research">
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
+                        <option>Жопа</option>
                         <option>Жопа</option>
                         <option>Жопа</option>
                         <option>Жопа</option>
@@ -167,7 +194,7 @@
                 <div class="form-group col-lg-3 col-md-3">
                     <label class="control-label col-lg-7 col-md-7" for="research_num">№ по журналу</label>
                     <div class="col-lg-5 col-md-5">
-                        <input class="form-control" type="number" id="research_num">
+                        <input class="form-control" type="number" name="research_num" id="research_num">
                     </div>
                 </div>
             </div>
@@ -175,75 +202,78 @@
                 <div class="form-group col-lg-3 col-md-3">
                     <label class="control-label col-md-4" for="family">Фамилия</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" placeholder="Фамилия" id="family">
+                        <input class="form-control" type="text" name="family" placeholder="Фамилия" id="family">
                     </div>
                 </div>
                 <div class="form-group col-lg-3 col-md-3">
                     <label class="control-label col-md-4" for="first_name">Имя</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" placeholder="Имя" id="first_name">
+                        <input class="form-control" type="text" placeholder="Имя" name="first_name" id="first_name">
                     </div>
                 </div>
                 <div class="form-group col-lg-3 col-md-3">
                     <label class="control-label col-md-4" for="second_name">Отчество</label>
                     <div class="col-md-8">
-                        <input class="form-control" type="text" placeholder="Отчество" id="second_name">
+                        <input class="form-control" type="text" placeholder="Отчество" name="second_name"
+                               id="second_name">
                     </div>
                 </div>
                 <div class="form-group col-lg-3 col-md-3">
                     <label class="control-label col-lg-4 col-md-5" for="gender">Пол</label>
-                    <select class="selectpicker col-lg-8 col-md-7" data-live-search="true" id="gender">
+                    <select class="selectpicker col-lg-8 col-md-7" name="gender" data-live-search="true" id="gender">
                     </select>
                 </div>
             </div>
             <div id="patient_data" class="col-sm-6" style="padding: 0">
                 <div class="form-group col-lg-12">
-                    <label class="control-label col-lg-4 col-md-6" for="anestisia_type">Тип анестезии</label>
-                    <select class="selectpicker col-lg-8 col-md-6" data-live-search="true" id="anestisia_type">
+                    <label class="control-label col-lg-4 col-md-6" for="anestesia_type">Тип анестезии</label>
+                    <select class="selectpicker col-lg-8 col-md-6" name="anestesia_type" data-live-search="true"
+                            id="anestesia_type">
                     </select>
                 </div>
                 <div class="form-group col-lg-7 col-md-7">
                     <label class="control-label col-lg-5 col-md-6" for="card_num">№ карты/и.б.</label>
                     <div class="col-lg-7 col-md-6">
-                        <input class="form-control" type="text" placeholder="Номер карты" id="card_num">
+                        <input class="form-control" type="text" name="card_num" placeholder="Номер карты" id="card_num">
                     </div>
                 </div>
                 <div class="form-group col-lg-7 col-md-7">
                     <label class="control-label col-lg-6 col-md-7" for="birth_year">Год рождения</label>
                     <div class="col-lg-6 col-md-5">
-                        <input class="form-control" type="number" placeholder="Год" id="birth_year">
+                        <input class="form-control" type="number" name="birth_year" placeholder="Год" id="birth_year">
                     </div>
                 </div>
                 <div class="form-group col-lg-5 col-md-5">
                     <div class="checkbox-inline col-lg-5 col-md-5">
                         <label class="" for="is_urgent">
-                            <input type="checkbox" id="is_urgent" value="">Экстренный</label>
+                            <input type="checkbox" id="is_urgent" name="is_urgent" value="">Экстренный</label>
                     </div>
                     <div class="checkbox-inline col-lg-5 col-md-5">
                         <label class="col-lg-8 col-md-7" for="is_vich">
-                            <input type="checkbox" id="is_vich" value="">ВИЧ</label>
+                            <input type="checkbox" id="is_vich" name="is_vich" value="">ВИЧ</label>
                     </div>
                 </div>
                 <div class="form-group col-lg-7 col-md-7">
                     <label class="control-label col-lg-4 col-md-5" for="place">Место</label>
-                    <select class="selectpicker col-lg-8 col-md-7" data-live-search="true" id="place">
+                    <select class="selectpicker col-lg-8 col-md-7" data-live-search="true" name="place" id="place">
                     </select>
                 </div>
                 <div class="form-group col-lg-5 col-md-5">
                     <div class="checkbox-inline col-lg-5 col-md-5">
                         <label class="" for="is_repeat">
-                            <input type="checkbox" id="is_repeat" value="">Повторно</label>
+                            <input type="checkbox" id="is_repeat" name="is_repeat" value="">Повторно</label>
                     </div>
                 </div>
                 <div class="form-group col-lg-7 col-md-6">
                     <label class="control-label col-lg-4 col-md-6" for="department">Отделение</label>
-                    <select class="selectpicker col-lg-8 col-md-6" data-live-search="true"
+                    <select class="selectpicker col-lg-8 col-md-6" name="department" data-live-search="true"
                             id="department">
                     </select>
                 </div>
                 <div class="form-group col-lg-5 col-md-6">
                     <label class="control-label col-lg-4 col-md-6" for="equipment">Аппарат</label>
-                    <select class="selectpicker col-lg-8 col-md-6" data-live-search="true" id="equipment">
+                    <select class="selectpicker col-lg-8 col-md-6" data-live-search="true" name="equipment"
+                            id="equipment">
                     </select>
                 </div>
                 <div class="form-group col-sm-12">
@@ -256,7 +286,7 @@
                             </button>
                         </div>
                         <div>
-                            <textarea class="form-control" id="entry_diagnose"></textarea>
+                            <textarea class="form-control" name="entry_diagnose" id="entry_diagnose"></textarea>
                         </div>
                     </div>
                 </div>
@@ -265,8 +295,8 @@
                 <div class="col-sm-5" style="padding: 0">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">
-                                Принадлежность
+                            <h3 class="panel-title text-center">
+                                <b>Принадлежность</b>
                             </h3>
                         </div>
                         <div id="status_affiliation" class="panel-body">
@@ -277,8 +307,8 @@
                 <div class="col-sm-7" style="padding: 0">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title">
-                                Лечебная
+                            <h3 class="panel-title text-center">
+                                <b>Лечебная</b>
                             </h3>
                         </div>
                         <div id="manipulation" class="panel-body">
@@ -290,14 +320,15 @@
             <div class="col-sm-8" style="padding: 0">
                 <div class="form-group col-lg-12">
                     <label class="control-label col-lg-3 col-md-4" for="protocol_name">Название протокола</label>
-                    <select class="selectpicker col-lg-9 col-md-8" data-live-search="true" id="protocol_name">
+                    <select class="selectpicker col-lg-9 col-md-8" name="protocol_name" data-live-search="true"
+                            id="protocol_name">
                     </select>
                 </div>
                 <div class="form-group col-sm-12">
                     <label class="control-label col-lg-3 col-md-4" for="protocol">Протокол</label>
                     <div class="col-lg-9 col-md-8">
                         <div>
-                            <textarea rows="5" class="form-control" id="protocol"></textarea>
+                            <textarea rows="5" class="form-control" name="protocol" id="protocol"></textarea>
                         </div>
                     </div>
                 </div>
@@ -305,14 +336,15 @@
                     <label class="control-label col-lg-3 col-md-4" for="conclusion">Заключение</label>
                     <div class="col-lg-9 col-md-8">
                         <div>
-                            <textarea rows="2" class="form-control" id="conclusion"></textarea>
+                            <textarea rows="2" class="form-control" name="conclusion" id="conclusion"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="form-group col-sm-7">
                     <label class="control-label col-lg-3 col-md-4" for="conclusion_var">Заключение</label>
                     <select multiple size="10" data-size="10" data-actions-box="true" data-live-search="true"
-                            data-multiple-separator=". " class="selectpicker col-lg-9 col-md-8" id="conclusion_var">
+                            data-multiple-separator=". " class="selectpicker col-lg-9 col-md-8" name="conclusion_var"
+                            id="conclusion_var">
                         <option>Жопа</option>
                         <option>Жопа</option>
                         <option>Жопа</option>
@@ -343,7 +375,7 @@
                 </div>
                 <div class="form-group col-sm-5">
                     <label class="control-label col-lg-2 col-md-3" for="video">Видео</label>
-                    <select data-size="10" data-live-search="true" title="Тип носителя"
+                    <select data-size="10" data-live-search="true" title="Тип носителя" name="video"
                             class="selectpicker col-lg-10 col-md-9" id="video">
                         <option>Видео</option>
                         <option>Видео</option>
@@ -375,7 +407,8 @@
                 <div class="form-group col-sm-6">
                     <label class="control-label col-lg-2 col-md-3" for="doctor">Врач</label>
                     <select multiple size="10" data-size="10" data-actions-box="true" data-live-search="true"
-                            data-multiple-separator=", " class="selectpicker col-lg-10 col-md-9" id="doctor">
+                            data-multiple-separator=", " class="selectpicker col-lg-10 col-md-9" name="doctor"
+                            id="doctor">
                         <option>Врач</option>
                         <option>Врач</option>
                         <option>Врач</option>
@@ -404,7 +437,7 @@
                 </div>
                 <div class="form-group col-sm-6">
                     <label class="control-label col-lg-2 col-md-3" for="sister">Сестра</label>
-                    <select data-size="10" data-live-search="true" title="ФИО медсестры"
+                    <select data-size="10" data-live-search="true" title="ФИО медсестры" name="sister"
                             class="selectpicker col-lg-10 col-md-9" id="sister">
                         <option>Сестра</option>
                         <option>Сестра</option>
@@ -452,16 +485,16 @@
                 </div>
                 <div>&nbsp;</div>
                 <div class="col-sm-12">
-                    <div class="form-group col-sm-6" >
+                    <div class="form-group col-sm-6">
                         <a class="btn btn-lg btn-default" style="width: 100%"
-                           title="Поиск ранее осмотренного пациента для повторного ввода" role="button">
+                           title="Поиск ранее осмотренного пациента для повторного ввода" id="search" role="button">
                             <span class="glyphicon glyphicon-search"></span>
                             <b>Поиск ранее осмотренного пациента для повторного ввода</b>
                         </a>
                     </div>
-                    <div class="form-group col-sm-6" >
+                    <div class="form-group col-sm-6">
                         <a class="btn btn-lg btn-primary" style="width: 100%"
-                           title="Запись в базу и вывод протоколов" role="button">
+                           title="Запись в базу и вывод протоколов" id="submit" role="button">
                             <span class="glyphicon glyphicon-ok"></span>
                             <b>Запись в базу и вывод протоколов</b>
                         </a>
@@ -474,85 +507,85 @@
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="biops">Биопсия Щипцевая</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="biops">
+                                <input class="form-control input-sm" name="biops" type="number" id="biops">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="4bl">ЧБЛ</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="4bl">
+                                <input class="form-control input-sm" name="4bl" type="number" id="4bl">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="tbl">ТБЛ</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="tbl">
+                                <input class="form-control input-sm" name="tbl" type="number" id="tbl">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="kbb">Установка КББ</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="kbb">
+                                <input class="form-control input-sm" name="kbb" type="number" id="kbb">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="pcr">ПЦР/смыв</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="pcr">
+                                <input class="form-control input-sm" name="pcr" type="number" id="pcr">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="mazok">Мазок отпечаток</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="mazok">
+                                <input class="form-control input-sm" name="mazok" type="number" id="mazok">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="brash">Браш биопсия</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="brash">
+                                <input class="form-control input-sm" name="brash" type="number" id="brash">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="bal">БАЛ</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="bal">
+                                <input class="form-control input-sm" name="bal" type="number" id="bal">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="ak">АК</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="ak">
+                                <input class="form-control input-sm" name="ak" type="number" id="ak">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="bk">БК/МБТ</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="bk">
+                                <input class="form-control input-sm" name="bk" type="number" id="bk">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="flora">Неспецифическая флора</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="flora">
+                                <input class="form-control input-sm" name="flora" type="number" id="flora">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="grib">Грибы</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="grib">
+                                <input class="form-control input-sm" name="grib" type="number" id="grib">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="gs">МБТ/Ж_С</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="gs">
+                                <input class="form-control input-sm" name="gs" type="number" id="gs">
                             </div>
                         </div>
                         <div class="form-group-md">
                             <label class="control-label col-lg-9 col-md-9" for="amilaza">Амилаза</label>
                             <div class="col-lg-3 col-md-3">
-                                <input class="form-control input-sm" type="number" id="amilaza">
+                                <input class="form-control input-sm" name="amilaza" type="number" id="amilaza">
                             </div>
                         </div>
                     </div>
