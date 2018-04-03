@@ -18,6 +18,7 @@ func main() {
 	http.Handle("/", CheckLoggedIn(NoCache(http.FileServer(http.Dir("htdocs")))))
 	http.Handle("/authorized/", Validate(NoCache(http.FileServer(http.Dir("htdocs")))))
 	http.HandleFunc("/login", Login)
+	http.HandleFunc("/getResearchList", GetResearchList)
 
 	address := config.Config["WEBSERVER_START_ON_ADDRESS"]
 	log.Printf("server starting on address " + address + "...")
@@ -51,6 +52,11 @@ var etagHeaders = []string{
 	"If-None-Match",
 	"If-Range",
 	"If-Unmodified-Since",
+}
+
+func ValidUser(w http.ResponseWriter) bool {
+	//TODO Сделать функцию проверки авторизации клиента
+	return true
 }
 
 func NoCache(h http.Handler) http.Handler {
@@ -142,10 +148,10 @@ func Validate(next http.Handler) http.Handler {
 }
 
 func Login(w http.ResponseWriter, r *http.Request) {
-	login := r.FormValue("login")
+
 	pass := r.FormValue("password")
 
-	if (login == "" && pass == "333") {
+	if (pass == "333") {
 		log.Printf("authorization success")
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
 			"admin": true,

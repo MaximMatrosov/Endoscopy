@@ -1,6 +1,6 @@
 {
   "WEBSERVER_START_ON_ADDRESS": "0.0.0.0:86",
-  "DB_CONNECT_STRING": "host=localhost port=5432 user=postgres password=postgres dbname=endoscopy sslmode=disable",
+  "DB_CONNECT_STRING": "endoscopy.db",
 
   "DIR_QUERIES": "htdocs/queries/"
 }

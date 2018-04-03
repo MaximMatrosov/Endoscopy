@@ -2,7 +2,7 @@
 
 (function () {
 
-    var inputLogin = document.querySelector('.form__input--login');
+    //var inputLogin = document.querySelector('.form__input--login');
     var inputPassword = document.querySelector('.form__input--password');
 
     var eyeFirstLeft = document.querySelector('.animation__eye--one-one');
@@ -11,13 +11,13 @@
     var eyeSecondLeft = document.querySelector('.animation__eye--two-one');
     var eyeSecondRight = document.querySelector('.animation__eye--two-two');
 
-    inputLogin.addEventListener('focus', firstFocusHandler);
+    //inputLogin.addEventListener('focus', firstFocusHandler);
     inputPassword.addEventListener('focus', firstFocusHandler);
 
-    inputLogin.addEventListener('input', inputHandler);
+    //inputLogin.addEventListener('input', inputHandler);
     inputPassword.addEventListener('input', inputHandler);
 
-    inputLogin.addEventListener('blur', blurHandler);
+    //inputLogin.addEventListener('blur', blurHandler);
     inputPassword.addEventListener('blur', blurHandler);
 
     function firstFocusHandler() {
@@ -44,10 +44,10 @@
 
         animationVideo.play();
 
-        inputLogin.removeEventListener('focus', firstFocusHandler);
+        //inputLogin.removeEventListener('focus', firstFocusHandler);
         inputPassword.removeEventListener('focus', firstFocusHandler);
 
-        inputLogin.addEventListener('focus', focusHandler);
+        //inputLogin.addEventListener('focus', focusHandler);
         inputPassword.addEventListener('focus', focusHandler);
 
         button.addEventListener('click', clickHandler);
@@ -159,12 +159,11 @@
 
     function clickHandler() {
 
-        var login = $("#login").val();
         var pass = $("#password").val();
         $.ajax({
             url: '/login',
             type: 'POST',
-            data: {login: login, password: pass},
+            data: {password: pass},
             success: function (result) {
                 $("#alert").css("display", "none");
                 var wrapper = document.querySelector('.wrapper');

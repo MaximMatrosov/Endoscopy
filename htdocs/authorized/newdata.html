@@ -9,6 +9,8 @@
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.css"/>
     <link rel="stylesheet" type="text/css" href="../css/bootstrap-select.min.css"/>
     <link rel="stylesheet" type="text/css" href="../css/jquery-ui.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/introjs.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.min.css"/>
     <link rel="icon" href="../favicon.png"/>
 
     <title>Эндоскопия</title>
@@ -76,10 +78,12 @@
 <body>
 <script src="../js/jquery-3.2.1.js"></script>
 <script src="../js/jquery-ui.min.js"></script>
+<script src="../js/jquery.blockUI.js"></script>
 <script src="../js/date.js"></script>
 <script src="../js/bootstrap.js"></script>
 <script src="../js/bootstrap-select.min.js"></script>
 <script src="../js/i18n/defaults-ru_RU.min.js"></script>
+<script src="../js/intro.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
 
@@ -124,6 +128,30 @@
         var DateTime = new Date(Date.now());
         $("#date").val(DateTime.toString('yyyy-MM-dd'));
         $("#time").val(DateTime.toString('HH:mm'));
+
+
+        //Загрузка вариантов исследований
+        $.ajax({
+            url: "/getResearchList",
+            type: 'GET',
+            success: function (data) {
+                var ResearchArr = JSON.parse(data);
+                $('#research').html('');
+                ResearchArr.forEach(function (item, i, arr) {
+                    $('#research').append("<option id='" + item.Id + "' data-code='" + item.Code + "'>" + item.Name + "</option>");
+                    $('#research').selectpicker('refresh');
+                })
+            },
+            error: function () {
+                alert("Не удалось загрузить список исследований!/nПроверьте наличие файла БД");
+            }
+        });
+        $("#research").selectpicker('toggle');
+
+        introJs().setOptions({'showBullets':false,'showButtons':false,'tooltipPosition':'left','exitOnOverlayClick':false}).start();
+        $("#research").on('changed.bs.select', function () {
+            introJs().exit();
+        });
     });
 </script>
 <div class="panel panel-primary">
@@ -145,50 +173,11 @@
                         <input class="form-control" name="date" type="time" id="time">
                     </div>
                 </div>
-                <div class="form-group col-lg-4 col-md-4">
+                <div id="research_block" class="form-group col-lg-4 col-md-4" data-intro="Необходимо выбрать">
                     <label class="control-label col-lg-5 col-md-6" for="research">Исследование</label>
                     <select class="selectpicker col-lg-7 col-md-6" name="research" title="Выберите исследование"
                             data-live-search="true"
                             data-size="10" id="research">
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
-                        <option>Жопа</option>
                     </select>
                 </div>
                 <div class="form-group col-lg-3 col-md-3">
@@ -489,7 +478,7 @@
                         <a class="btn btn-lg btn-default" style="width: 100%"
                            title="Поиск ранее осмотренного пациента для повторного ввода" id="search" role="button">
                             <span class="glyphicon glyphicon-search"></span>
-                            <b>Поиск ранее осмотренного пациента для повторного ввода</b>
+                            <b>Поиск для повторного ввода</b>
                         </a>
                     </div>
                     <div class="form-group col-sm-6">
