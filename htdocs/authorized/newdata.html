@@ -131,6 +131,7 @@
 
 
         //Загрузка вариантов исследований
+        var hint;
         $.ajax({
             url: "/getResearchList",
             type: 'GET',
@@ -138,19 +139,28 @@
                 var ResearchArr = JSON.parse(data);
                 $('#research').html('');
                 ResearchArr.forEach(function (item, i, arr) {
-                    $('#research').append("<option id='" + item.Id + "' data-code='" + item.Code + "'>" + item.Name + "</option>");
+                    $('#research').append("<option id='" + (i+1) + "' data-code='" + item.Code + "'>" + item.Name + "</option>");
                     $('#research').selectpicker('refresh');
                 })
+                $("#research").selectpicker('toggle');
+                hint = introJs().setOptions({
+                    'showBullets': false,
+                    'showButtons': false,
+                    'tooltipPosition': 'left',
+                    'exitOnOverlayClick': false
+                }).start();
             },
             error: function () {
-                alert("Не удалось загрузить список исследований!/nПроверьте наличие файла БД");
+                alert("Не удалось загрузить список исследований! Проверьте наличие файла БД");
             }
         });
-        $("#research").selectpicker('toggle');
-
-        introJs().setOptions({'showBullets':false,'showButtons':false,'tooltipPosition':'left','exitOnOverlayClick':false}).start();
-        $("#research").on('changed.bs.select', function () {
-            introJs().exit();
+        $("#research").one('changed.bs.select', function () {
+            hint.exit();
+        });
+        $("#research").on('changed.bs.select', function (index, newVal, oldVal) {
+            var index = index;
+            var newVal = newVal;
+            var oldVal = oldVal;
         });
     });
 </script>

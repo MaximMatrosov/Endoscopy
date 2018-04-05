@@ -54,9 +54,27 @@ var etagHeaders = []string{
 	"If-Unmodified-Since",
 }
 
-func ValidUser(w http.ResponseWriter) bool {
-	//TODO Сделать функцию проверки авторизации клиента
-	return true
+func ValidUser(r *http.Request) bool {
+	token, _ := r.Cookie("EndoToken")
+
+	if token == nil {
+		return false
+	} else {
+		tokenString := token.Value
+		token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+			// Don't forget to validate the alg is what you expect:
+			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
+				return nil, fmt.Errorf("Unexpected signing method: %v", token.Header["alg"])
+			}
+			return []byte("endoscopy"), nil
+		})
+		if _, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
+			return true
+		} else {
+			log.Print(err)
+			return false
+		}
+	}
 }
 
 func NoCache(h http.Handler) http.Handler {
